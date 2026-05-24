@@ -1,0 +1,227 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Khushi Child Care — Starbucks-inspired design tokens */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-pill: 50px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-ceramic: var(--ceramic);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-brand: var(--brand);
+  --color-brand-accent: var(--brand-accent);
+  --color-house: var(--house);
+  --color-uplift: var(--uplift);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-wash: var(--gold-wash);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-soft: var(--on-dark-soft);
+
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Lora", "Iowan Old Style", Georgia, serif;
+
+  --shadow-card: 0 0 0.5px 0 rgba(0, 0, 0, 0.14), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  --shadow-nav: 0 1px 3px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.07);
+  --shadow-frap: 0 0 6px rgba(0, 0, 0, 0.24), 0 8px 12px rgba(0, 0, 0, 0.14);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Page surfaces */
+  --canvas: oklch(0.957 0.008 90);          /* #f2f0eb Neutral Warm */
+  --ceramic: oklch(0.943 0.007 80);         /* #edebe9 */
+  --background: var(--canvas);
+  --foreground: oklch(0 0 0 / 0.87);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0 / 0.87);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0 0 0 / 0.87);
+
+  /* Brand greens */
+  --brand: oklch(0.45 0.105 162);           /* #006241 Starbucks Green */
+  --brand-accent: oklch(0.49 0.115 160);    /* #00754A Green Accent */
+  --house: oklch(0.31 0.04 165);            /* #1E3932 House Green */
+  --uplift: oklch(0.41 0.045 168);          /* #2b5148 */
+
+  --primary: var(--brand-accent);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.97 0.005 100);
+  --secondary-foreground: var(--foreground);
+
+  --muted: oklch(0.96 0.005 100);
+  --muted-foreground: oklch(0 0 0 / 0.58);
+
+  --accent: oklch(0.94 0.012 160);
+  --accent-foreground: var(--brand);
+
+  /* Gold (Rewards / trust ceremony only) */
+  --gold: oklch(0.74 0.09 82);              /* #cba258 */
+  --gold-soft: oklch(0.83 0.07 84);         /* #dfc49d */
+  --gold-wash: oklch(0.975 0.018 88);       /* #faf6ee */
+
+  /* Text */
+  --ink: oklch(0 0 0 / 0.87);
+  --ink-soft: oklch(0 0 0 / 0.58);
+  --on-dark: oklch(1 0 0);
+  --on-dark-soft: oklch(1 0 0 / 0.7);
+
+  --destructive: oklch(0.55 0.21 27);       /* #c82014 */
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.9 0.005 100);
+  --input: oklch(0.9 0.005 100);
+  --ring: var(--brand-accent);
+
+  --chart-1: var(--brand-accent);
+  --chart-2: var(--gold);
+  --chart-3: var(--uplift);
+  --chart-4: var(--house);
+  --chart-5: var(--brand);
+
+  --sidebar: var(--canvas);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--brand-accent);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--ceramic);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+@layer base {
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.016em;
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background: var(--brand-accent);
+    color: white;
+  }
+}
+
+@layer components {
+  /* Universal pill button base */
+  .btn-pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-[50px] font-semibold transition-all duration-200;
+    letter-spacing: -0.01em;
+  }
+  .btn-pill:active {
+    transform: scale(0.95);
+  }
+
+  .btn-primary {
+    background: var(--brand-accent);
+    color: white;
+    border: 1px solid var(--brand-accent);
+    padding: 10px 22px;
+    font-size: 1.5rem;
+  }
+  .btn-primary:hover { background: var(--brand); border-color: var(--brand); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--brand-accent);
+    border: 1.5px solid var(--brand-accent);
+    padding: 10px 22px;
+    font-size: 1.5rem;
+  }
+  .btn-outline:hover { background: var(--brand-accent); color: white; }
+
+  .btn-dark {
+    background: black;
+    color: white;
+    border: 1px solid black;
+    padding: 9px 18px;
+    font-size: 1.4rem;
+  }
+
+  .btn-on-dark-filled {
+    background: white;
+    color: var(--brand-accent);
+    border: 1px solid white;
+    padding: 10px 22px;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .btn-on-dark-filled:hover { background: var(--gold-wash); }
+
+  .btn-on-dark-outline {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 22px;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .btn-on-dark-outline:hover { background: rgba(255,255,255,0.1); }
+
+  .card-soft {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .trust-pill {
+    @apply inline-flex items-center gap-2 rounded-[50px];
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 4px 14px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
